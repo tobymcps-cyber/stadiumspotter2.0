@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pick The Stadium</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .round-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .images-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+  }
+  .images-row img {
+    width: 250px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .images-row img:hover {
+    transform: scale(1.05);
+  }
+  #scoreDisplay, #feedback {
+    font-weight: bold;
+    margin-top: 15px;
+    color: #1a2b4c;
+  }
+</style>
+</head>
+<body>
+
+<header onclick="window.location.href='index.html'">Stadium Spotter</header>
+
+<div class="container card">
+  <h2>Pick The Stadium</h2>
+  <div id="roundContainer" class="round-container"></div>
+  <div id="feedback"></div>
+  <div id="scoreDisplay"></div>
+  <button onclick="startGame()" style="margin-top: 15px;">Restart Game</button>
+  <button onclick="window.location.href='index.html'" style="margin-top: 10px;">Home</button>
+</div>
+
+<script>
+const stadiums = [
+  { name:"Camp Nou", img:"images/stadiums/campnou.jpg" },
+  { name:"Anfield", img:"images/stadiums/anfield.jpg" },
+  { name:"Old Trafford", img:"images/stadiums/oldtrafford.jpg" },
+  { name:"Santiago Bernabéu", img:"images/stadiums/bernabeu.jpg" },
+  { name:"Allianz Arena", img:"images/stadiums/allianz.jpg" },
+  { name:"San Siro", img:"images/stadiums/sansiro.jpg" }
+];
+
+let rounds = 3;
+let currentRound = 0;
+let score = 0;
+let roundStadiums = [];
+let correctStadium = "";
+
+function startGame() {
+  score = 0;
+  currentRound = 0;
+  document.getElementById('scoreDisplay').textContent = `Score: ${score}`;
+  document.getElementById('feedback').textContent = '';
+  nextRound();
+}
+
+function nextRound() {
+  if(currentRound >= rounds) {
+    document.getElementById('roundContainer').innerHTML = `<h3>Game over! Your score: ${score}/${rounds}</h3>`;
+    document.getElementById('feedback').textContent = '';
+    return;
+  }
+
+  roundStadiums = stadiums.sort(() => 0.5 - Math.random()).slice(0,3);
+  correctStadium = roundStadiums[Math.floor(Math.random()*roundStadiums.length)].name;
+
+  let html = `<h3>Round ${currentRound + 1}: Click on ${correctStadium}</h3>`;
+  html += `<div class="images-row">`;
+  roundStadiums.forEach(stadium => {
+    html += `<img src="${stadium.img}" alt="${stadium.name}" onclick="checkAnswer('${stadium.name}')">`;
+  });
+  html += `</div>`;
+  document.getElementById('roundContainer').innerHTML = html;
+  document.getElementById('feedback').textContent = '';
+}
+
+function checkAnswer(selected) {
+  if(selected === correctStadium) {
+    score++;
+    document.getElementById('feedback').textContent = `✅ Correct! It was ${correctStadium}`;
+  } else {
+    document.getElementById('feedback').textContent = `❌ Wrong! It was ${correctStadium}`;
+  }
+  document.getElementById('scoreDisplay').textContent = `Score: ${score}`;
+  currentRound++;
+  setTimeout(nextRound, 1000); // 1-second delay before next round
+}
+
+// Start game immediately
+startGame();
+</script>
+
+</body>
+</html>

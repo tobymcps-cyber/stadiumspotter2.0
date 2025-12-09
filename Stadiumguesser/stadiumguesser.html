@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stadium Guesser</title>
+<link rel="stylesheet" href="style.css">
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+
+<header onclick="window.location.href='index.html'">Stadium Spotter</header>
+
+<div class="container card" id="game">
+    <div id="topBar">
+        <div id="score">Score: 0</div>
+        <div id="result"></div>
+        <button id="nextBtn" onclick="nextStadium()" style="display:none;">Next Stadium</button>
+    </div>
+    <div id="stadiumName"></div>
+    <div id="map" style="height:500px; margin-top:15px;"></div>
+    <button id="restartBtn" onclick="restartGame()" style="display:none; margin-top:10px;">Restart Game</button>
+    <button onclick="window.location.href='index.html'" style="margin-top:10px;">Home</button>
+</div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="stadiumguesser.js"></script>
+</body>
+</html>

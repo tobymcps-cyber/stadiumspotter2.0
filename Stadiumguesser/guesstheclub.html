@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guess The Club</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header onclick="window.location.href='index.html'">Stadium Spotter</header>
+
+<div class="container card" id="club-game">
+    <h2>Guess the Club 🏟️</h2>
+    <input type="text" id="clubInput" placeholder="Type club name here...">
+    <button onclick="checkClub()">Submit</button>
+    <div id="clubClue"></div>
+    <div id="clubResult"></div>
+    <div id="clubChances" style="margin-top:10px; font-weight:bold; color:#1a2b4c;"></div>
+    <button onclick="restartClubGame()" style="display:none; margin-top:10px;" id="clubRestart">Play Again</button>
+    <button onclick="window.location.href='index.html'" style="margin-top:10px;">Home</button>
+</div>
+
+<script src="guesstheclub.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+body {
+  margin:0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background:#eaeaea;
+  color:#222;
+  text-align:center;
+}
+
+header {
+  background:#1a2b4c;
+  color:white;
+  padding:20px;
+  font-size:28px;
+  font-weight:bold;
+  cursor:pointer;
+}
+header:hover { background:#0f1c33; }
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+button {
+  padding:12px 22px;
+  border:none;
+  border-radius:12px;
+  background:#1a2b4c;
+  color:white;
+  font-size:16px;
+  margin:8px;
+  cursor:pointer;
+}
+button:hover { background:#0f1c33; }
+
+#map {
+  height:600px;
+  width:100%;
+  margin-top:15px;
+  border-radius:10px;
+}
+
+/* Removed display:none; so Guess the Club works */
+#clubGame {
+  display:block;
+}
+
+#clubInput {
+  padding:12px;
+  width:70%;
+  font-size:16px;
+  border:2px solid #1a2b4c;
+  border-radius:10px;
+}
+
+#clubClue, #clubResult {
+  margin-top:15px;
+  font-size:18px;
+  font-weight:bold;
+  color:#1a2b4c;
+}
+
+.quotes {
+  margin-top: 30px;
+  font-size: 18px;
+  color: #333;
+}
+
+.quote {
+  margin-bottom: 25px;           /* Mellanrum mellan varje citat */
+  font-style: italic;
+  line-height: 1.8;              /* Gör texten luftigare */
+  padding: 15px 20px;            /* Lätt inramning för tydlighet */
+  background: #f7f7f7;           /* Ljus bakgrund för citat */
+  border-left: 5px solid #1a2b4c; /* Snygg rand till vänster */
+  border-radius: 8px;
+}
+
+.quote span {
+  display: block;
+  margin-top: 10px;
+  font-family: 'Brush Script MT', cursive;
+  font-size: 20px;
+  color: #1a2b4c;
+}
+
+.quotes {
+  margin-top: 30px;
+  font-size: 18px;
+  color: #333;
+}
+
+.quote {
+  margin-bottom: 10px;      /* liten rad mellan varje citat */
+  font-style: italic;
+  line-height: 1.5;         /* lite luftigare radavstånd */
+}
+
+.quote span {
+  display: block;
+  margin-top: 5px;          /* liten rad mellan citat och författare */
+  font-family: 'Brush Script MT', cursive;
+  font-size: 18px;
+  color: #1a2b4c;
+}
+
