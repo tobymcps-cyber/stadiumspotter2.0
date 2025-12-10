@@ -5,47 +5,168 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pick The Stadium</title>
 <link rel="stylesheet" href="style.css">
+<!-- Google Font for Christmas style -->
+<link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  .round-container {
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #0b1d3a, #1a2f5d);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  /* Snow effect */
+  .snowflake {
+    position: fixed;
+    top: -10px;
+    z-index: 9999;
+    pointer-events: none;
+    color: #fff;
+    user-select: none;
+    font-size: 1em;
+    animation-name: fall;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(360deg); }
+  }
+
+  header {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin: 20px 0;
+    cursor: pointer;
+    color: #ffdd59;
     text-align: center;
+    text-shadow: 0 0 10px #ffdd59;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 25px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    text-align: center;
+  }
+
+  h2 {
+    margin-bottom: 15px;
+  }
+
+  .info-panel {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    font-size: 1.2rem;
+    text-align: left;
+    line-height: 1.5;
+    font-family: 'Mountains of Christmas', cursive; /* Christmas font */
+    color: #ffecb3;
+  }
+
+  .info-panel span {
+    color: #ffdd59;
+    font-weight: bold;
+  }
+
+  .round-container {
     margin-top: 20px;
   }
+
   .images-row {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 15px;
     margin-top: 15px;
-    flex-wrap: wrap;
   }
+
   .images-row img {
     width: 250px;
     height: 150px;
     object-fit: cover;
     border-radius: 12px;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
   }
+
   .images-row img:hover {
     transform: scale(1.05);
+    box-shadow: 0 0 15px #ffdd59;
   }
+
   #scoreDisplay, #feedback {
     font-weight: bold;
     margin-top: 15px;
-    color: #1a2b4c;
+    font-size: 1.2rem;
+    color: #ffdd59;
+    text-shadow: 0 0 5px #ffdd59;
+  }
+
+  button {
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: #fff;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
   }
 </style>
 </head>
 <body>
 
+<!-- Snow elements -->
+<script>
+  for(let i=0;i<50;i++){
+    const snow = document.createElement("div");
+    snow.className = "snowflake";
+    snow.style.left = Math.random()*100 + "vw";
+    snow.style.fontSize = Math.random()*10+10+"px";
+    snow.style.animationDuration = 5+Math.random()*10+"s";
+    snow.textContent = "❄";
+    document.body.appendChild(snow);
+  }
+</script>
+
 <header onclick="window.location.href='index.html'">Stadium Spotter</header>
 
-<div class="container card">
-  <h2>Pick The Stadium</h2>
+<div class="container">
+  <h2>Pick The Stadium ⚽</h2>
+
+  <div class="info-panel">
+    <p>🎄 <span>Fun Football & Festive Facts:</span></p>
+    <ul>
+      <li>⚽ The largest stadium in Europe is <strong>Camp Nou</strong>.</li>
+      <li>❄ Football in snowy weather can be magical and tricky!</li>
+      <li>🎅 Santa loves football too—he might be your lucky charm!</li>
+      <li>🏆 Champions are made with hard work and joy!</li>
+      <li>🎄 Celebrate the holidays while enjoying your favorite sport!</li>
+    </ul>
+  </div>
+
   <div id="roundContainer" class="round-container"></div>
   <div id="feedback"></div>
   <div id="scoreDisplay"></div>
-  <button onclick="startGame()" style="margin-top: 15px;">Restart Game</button>
-  <button onclick="window.location.href='index.html'" style="margin-top: 10px;">Home</button>
+  <button onclick="startGame()">Restart Game</button>
+  <button onclick="window.location.href='index.html'">Home</button>
 </div>
 
 <script>
@@ -55,34 +176,50 @@ const stadiums = [
   { name:"Old Trafford", img:"images/stadiums/oldtrafford.jpg" },
   { name:"Santiago Bernabéu", img:"images/stadiums/bernabeu.jpg" },
   { name:"Allianz Arena", img:"images/stadiums/allianz.jpg" },
-  { name:"San Siro", img:"images/stadiums/sansiro.jpg" }
+  { name:"San Siro", img:"images/stadiums/sansiro.jpg" },
+  { name:"Stamford Bridge", img:"images/stadiums/stamfordbridge.jpg" },
+  { name:"Stade Velodrome", img:"images/stadiums/stadevelodrome.jpg" },
+  { name:"Signal Iduna", img:"images/stadiums/signaliduna.jpg" },
+  { name:"Diego Maradona", img:"images/stadiums/diegomaradona.jpg" },
+  { name:"Parc Princess", img:"images/stadiums/parcprincess.jpg" }
 ];
 
-let rounds = 3;
+let rounds = 5;
 let currentRound = 0;
 let score = 0;
-let roundStadiums = [];
+let allRounds = [];
 let correctStadium = "";
+
+function shuffleArray(arr) {
+  return arr.sort(() => Math.random() - 0.5);
+}
 
 function startGame() {
   score = 0;
   currentRound = 0;
   document.getElementById('scoreDisplay').textContent = `Score: ${score}`;
   document.getElementById('feedback').textContent = '';
+
+  const shuffled = shuffleArray([...stadiums]);
+  allRounds = [];
+  for (let i = 0; i < rounds; i++) {
+    allRounds.push(shuffled.slice(i*3, i*3 + 3));
+  }
+
   nextRound();
 }
 
 function nextRound() {
   if(currentRound >= rounds) {
-    document.getElementById('roundContainer').innerHTML = `<h3>Game over! Your score: ${score}/${rounds}</h3>`;
+    document.getElementById('roundContainer').innerHTML = `<h3>🎄 Game over! Your score: ${score}/${rounds}</h3>`;
     document.getElementById('feedback').textContent = '';
     return;
   }
 
-  roundStadiums = stadiums.sort(() => 0.5 - Math.random()).slice(0,3);
+  const roundStadiums = allRounds[currentRound];
   correctStadium = roundStadiums[Math.floor(Math.random()*roundStadiums.length)].name;
 
-  let html = `<h3>Round ${currentRound + 1}: Click on ${correctStadium}</h3>`;
+  let html = `<h3>Round ${currentRound + 1}: Click on <span style="color:#27ae60">${correctStadium}</span></h3>`;
   html += `<div class="images-row">`;
   roundStadiums.forEach(stadium => {
     html += `<img src="${stadium.img}" alt="${stadium.name}" onclick="checkAnswer('${stadium.name}')">`;
@@ -90,6 +227,8 @@ function nextRound() {
   html += `</div>`;
   document.getElementById('roundContainer').innerHTML = html;
   document.getElementById('feedback').textContent = '';
+
+  currentRound++;
 }
 
 function checkAnswer(selected) {
@@ -100,13 +239,12 @@ function checkAnswer(selected) {
     document.getElementById('feedback').textContent = `❌ Wrong! It was ${correctStadium}`;
   }
   document.getElementById('scoreDisplay').textContent = `Score: ${score}`;
-  currentRound++;
-  setTimeout(nextRound, 1000); // 1-second delay before next round
+  setTimeout(nextRound, 1000);
 }
 
-// Start game immediately
 startGame();
 </script>
 
 </body>
 </html>
+
