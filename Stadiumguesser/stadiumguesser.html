@@ -3,29 +3,108 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stadium Guesser</title>
-<link rel="stylesheet" href="style.css">
-<!-- Leaflet CSS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<title>Stadium Map Game</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<style>
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin: 0;
+    background: linear-gradient(to bottom, #0b1d3a, #1a2f5d);
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+}
+h1 {
+    margin-top: 20px;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+}
+#stadiumName {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #ffdd59;
+}
+#map {
+    height: 500px;
+    width: 90%;
+    max-width: 900px;
+    margin: 20px auto;
+    border: 3px solid #ffdd59;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+button {
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+    color: #fff;
+}
+#nextBtn {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+}
+#restartBtn {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+#result, #score {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* --- Snow effect for subtle Christmas touch --- */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    color: #fff;
+    font-size: 1rem;
+    user-select: none;
+    z-index: 1000;
+    pointer-events: none;
+    animation: fall 10s linear infinite;
+}
+@keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+</style>
 </head>
 <body>
 
-<header onclick="window.location.href='index.html'">Stadium Spotter</header>
+<h1>Guess the Stadium on the Map</h1>
+<div id="stadiumName"></div>
+<div id="map"></div>
+<div id="result"></div>
+<div id="score"></div>
+<button id="nextBtn" onclick="nextStadium()" style="display:none;">Next</button>
+<button id="restartBtn" onclick="restartGame()" style="display:none;">Restart Game</button>
 
-<div class="container card" id="game">
-    <div id="topBar">
-        <div id="score">Score: 0</div>
-        <div id="result"></div>
-        <button id="nextBtn" onclick="nextStadium()" style="display:none;">Next Stadium</button>
-    </div>
-    <div id="stadiumName"></div>
-    <div id="map" style="height:500px; margin-top:15px;"></div>
-    <button id="restartBtn" onclick="restartGame()" style="display:none; margin-top:10px;">Restart Game</button>
-    <button onclick="window.location.href='index.html'" style="margin-top:10px;">Home</button>
-</div>
-
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="stadiumguesser.js"></script>
+<script>
+// --- Snowflakes ---
+function createSnowflake() {
+    const snowflake = document.createElement('div');
+    snowflake.className = 'snowflake';
+    snowflake.style.left = Math.random() * window.innerWidth + 'px';
+    snowflake.style.fontSize = (Math.random() * 12 + 10) + 'px';
+    snowflake.textContent = '❄';
+    document.body.appendChild(snowflake);
+    setTimeout(() => snowflake.remove(), 10000);
+}
+setInterval(createSnowflake, 400);
+</script>
+
 </body>
 </html>
+
