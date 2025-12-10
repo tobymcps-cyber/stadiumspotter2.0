@@ -8,7 +8,6 @@ const stadiums = [
 let shuffledStadiums, current, score;
 let map, marker, correctMarker, polyline;
 
-// Start when DOM is ready
 window.addEventListener("DOMContentLoaded", startGame);
 
 function startGame() {
@@ -50,19 +49,19 @@ function loadStadium() {
         let resultText;
 
         if(distance < 50) {
-            resultText = `✅ Correct! ${Math.round(distance)} km`;
+            resultText = `✅ Correct! Distance: ${Math.round(distance)} km`;
             score++;
             document.getElementById('score').textContent = `Score: ${score}`;
         } else {
-            resultText = `❌ ${Math.round(distance)} km`;
+            resultText = `❌ Wrong! Distance: ${Math.round(distance)} km`;
         }
 
         correctMarker = L.marker([stadium.lat, stadium.lng], { opacity:0.7 })
             .addTo(map)
-            .bindPopup(`${stadium.name}`)
+            .bindPopup(`<b>${stadium.name}</b>`)
             .openPopup();
 
-        polyline = L.polyline([[lat, lng], [stadium.lat, stadium.lng]], { color: 'red' }).addTo(map);
+        polyline = L.polyline([[lat, lng], [stadium.lat, stadium.lng]], { color: 'red', weight: 4, dashArray: '5,5' }).addTo(map);
 
         document.getElementById('result').textContent = resultText;
         document.getElementById('nextBtn').style.display = 'inline-block';
@@ -92,3 +91,5 @@ function getDistance(lat1, lon1, lat2, lon2) {
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
     return R * c;
 }
+
+
