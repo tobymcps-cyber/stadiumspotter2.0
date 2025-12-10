@@ -5,28 +5,166 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stadium Spotter</title>
 <link rel="stylesheet" href="style.css">
+<style>
+/* --- Base Styles --- */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0b1d3a, #1a2f5d);
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+}
+header {
+    background: rgba(15, 25, 50, 0.95);
+    padding: 25px;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    border-bottom: 2px solid #ffdd59;
+}
+.container {
+    max-width: 950px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+}
+h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+}
+p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    color: #d0d0d0;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+/* --- Quotes Carousel --- */
+.quotes {
+    margin-bottom: 50px;
+    min-height: 120px;
+    position: relative;
+    overflow: hidden;
+}
+.quote {
+    font-style: italic;
+    font-size: 1.4rem;
+    color: #fff;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    transition: opacity 1s ease-in-out;
+}
+.quote span {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #ffdd59; /* festive gold */
+}
+
+/* --- Buttons --- */
+button {
+    background: linear-gradient(135deg, #27ae60, #2ecc71); /* green for festive */
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 15px 35px;
+    margin: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+button:hover {
+    transform: scale(1.07);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+    background: linear-gradient(135deg, #c0392b, #e74c3c); /* red on hover */
+}
+
+/* --- Snow Effect --- */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    color: #fff;
+    font-size: 1rem;
+    user-select: none;
+    z-index: 1000;
+    pointer-events: none;
+    animation: fall 10s linear infinite;
+}
+@keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+@media(max-width:600px){
+    h1 { font-size: 2rem; }
+    button { width: 85%; margin: 10px 0; }
+    .quote { font-size: 1.2rem; }
+}
+</style>
 </head>
 <body>
 
-<header>Stadium Spotter</header>
+<header>Stadium Spotter ⚽</header>
 
 <div class="container">
-    <h1>Welcome to Stadium Spotter ⚽</h1>
-    <p>Choose your gamemode and test your football knowledge!</p>
-    
+    <h1>Welcome to Stadium Spotter</h1>
+    <p>Test your football knowledge and see how well you know the world’s most famous stadiums and clubs!</p>
+
     <div class="quotes">
-        <div class="quote">"I learned all about life with a ball at my feet."<span>– Ronaldinho</span></div>
+        <div class="quote active">"I learned all about life with a ball at my feet."<span>– Ronaldinho</span></div>
         <div class="quote">"The more difficult the victory, the greater the happiness in winning."<span>– Pelé</span></div>
         <div class="quote">"You have to fight to reach your dream. You have to sacrifice and work hard for it."<span>– Lionel Messi</span></div>
+        <div class="quote">"Football is simple, but it is difficult to play simple."<span>– Johan Cruyff</span></div>
+        <div class="quote">"I don’t believe skill was, or ever will be, the result of coaches. It is a result of a love affair between the child and the ball."<span>– Roy Keane</span></div>
+        <div class="quote">"Success is no accident. It is hard work, perseverance, learning, studying, sacrifice and most of all, love of what you are doing."<span>– Pelé</span></div>
+        <div class="quote">"Football is a game of passion, dedication and magic moments."<span>– Unknown</span></div>
     </div>
 
-    <button onclick="window.location.href='stadiumguesser.html'">Play Stadium Guesser</button>
-    <button onclick="window.location.href='guesstheclub.html'">Play Guess the Club</button>
-    <button onclick="window.location.href='photogallery.html'">Photo Gallery</button>
-    <button onclick="window.location.href='pickthestadium.html'">Pick The Stadium</button>
-
+    <div class="buttons">
+        <button onclick="window.location.href='stadiumguesser.html'">Play Stadium Guesser</button>
+        <button onclick="window.location.href='guesstheclub.html'">Play Guess the Club</button>
+        <button onclick="window.location.href='photogallery.html'">Photo Gallery</button>
+        <button onclick="window.location.href='pickthestadium.html'">Pick The Stadium</button>
+    </div>
 </div>
 
-<script src="main.js"></script>
+<script>
+// --- Quotes Carousel ---
+let quotes = document.querySelectorAll('.quote');
+let currentQuote = 0;
+quotes[currentQuote].style.opacity = 1;
+
+setInterval(() => {
+    quotes[currentQuote].style.opacity = 0;
+    currentQuote = (currentQuote + 1) % quotes.length;
+    quotes[currentQuote].style.opacity = 1;
+}, 5000);
+
+// --- Snowflakes ---
+function createSnowflake() {
+    const snowflake = document.createElement('div');
+    snowflake.className = 'snowflake';
+    snowflake.style.left = Math.random() * window.innerWidth + 'px';
+    snowflake.style.fontSize = (Math.random() * 12 + 10) + 'px';
+    snowflake.textContent = '❄'; // snowflake emoji
+    document.body.appendChild(snowflake);
+
+    setTimeout(() => {
+        snowflake.remove();
+    }, 10000);
+}
+
+setInterval(createSnowflake, 300);
+</script>
+
 </body>
 </html>
+
