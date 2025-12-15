@@ -120,7 +120,7 @@
     cursor: pointer;
     font-weight: bold;
     font-size: 1.1rem;
-    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    background: linear-gradient(135deg, #0459ae, #0459ae);
     color: #fff;
     transition: transform 0.2s, box-shadow 0.2s;
   }
@@ -150,7 +150,11 @@
 
 <div class="container">
   <h2>Pick The Stadium ⚽</h2>
-
+  <div id="roundContainer" class="round-container"></div>
+  <div id="feedback"></div>
+  <div id="scoreDisplay"></div>
+  <button onclick="startGame()">Restart Game</button>
+  <button onclick="window.location.href='index.html'">Home</button>
   <div class="info-panel">
     <p>🎄 <span>Fun Football & Festive Facts:</span></p>
     <ul>
@@ -161,12 +165,6 @@
       <li>🎄 Celebrate the holidays while enjoying your favorite sport!</li>
     </ul>
   </div>
-
-  <div id="roundContainer" class="round-container"></div>
-  <div id="feedback"></div>
-  <div id="scoreDisplay"></div>
-  <button onclick="startGame()">Restart Game</button>
-  <button onclick="window.location.href='index.html'">Home</button>
 </div>
 
 <script>
