@@ -62,7 +62,7 @@ input {
     outline: none;
 }
 
-/* --- Buttons (same as index) --- */
+/* --- Buttons --- */
 button {
     background: linear-gradient(135deg, #0459ae, #0459ae);
     border: none;
@@ -84,6 +84,7 @@ button:hover {
 }
 
 /* --- Text Output --- */
+#clubScore,
 #clubClue,
 #clubResult,
 #clubChances {
@@ -92,7 +93,7 @@ button:hover {
     text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
 
-/* --- Snow Effect (IDENTICAL TO INDEX) --- */
+/* --- Snow Effect --- */
 .snowflake {
     position: fixed;
     top: -10px;
@@ -111,16 +112,9 @@ button:hover {
 
 /* --- Mobile --- */
 @media (max-width: 600px) {
-    h2 {
-        font-size: 2rem;
-    }
-    button {
-        width: 85%;
-        margin: 10px 0;
-    }
-    input {
-        width: 90%;
-    }
+    h2 { font-size: 2rem; }
+    button { width: 85%; margin: 10px 0; }
+    input { width: 90%; }
 }
 </style>
 </head>
@@ -134,10 +128,14 @@ button:hover {
 <div class="container card" id="club-game">
     <h2>Guess the Club 🏟️</h2>
 
+    <!-- SCORE / STREAK -->
+    <div id="clubScore"></div>
+
     <input type="text" id="clubInput" placeholder="Type club name here...">
 
     <button onclick="checkClub()">Submit</button>
 
+    <!-- GAME FEEDBACK -->
     <div id="clubClue"></div>
     <div id="clubResult"></div>
     <div id="clubChances"></div>
@@ -154,7 +152,7 @@ button:hover {
 <script src="guesstheclub.js"></script>
 
 <script>
-/* --- Snowflakes (IDENTICAL TO INDEX) --- */
+/* --- Snowflakes --- */
 function createSnowflake() {
     const snowflake = document.createElement('div');
     snowflake.className = 'snowflake';
@@ -173,3 +171,4 @@ setInterval(createSnowflake, 300);
 
 </body>
 </html>
+
