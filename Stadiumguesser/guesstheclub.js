@@ -120,7 +120,7 @@ const clubs = [
     league: "Serie A"
   },
   {
-    name: "Paris Saint-Germain",
+    name: "PSG",
     country: "France",
     founded: 1970,
     manager: "Luis Enrique",
@@ -218,4 +218,5 @@ function similarity(a, b) {
 }
 
 window.onload = startClubGame;
+
 
