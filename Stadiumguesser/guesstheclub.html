@@ -14,6 +14,51 @@ body {
     color: #fff;
     overflow-x: hidden;
     position: relative;
+    /* --- Layout för instruktioner + spel --- */
+.game-layout {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+/* Instruktionsruta */
+.instructions {
+    flex: 1;
+    background: rgba(15, 25, 50, 0.85);
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    text-align: left;
+}
+
+.instructions h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #ffdd59;
+}
+
+.instructions ul {
+    padding-left: 20px;
+}
+
+.instructions li {
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+/* Spelkort */
+#club-game {
+    flex: 2;
+}
+
+/* Mobilanpassning */
+@media (max-width: 900px) {
+    .game-layout {
+        flex-direction: column;
+    }
+}
+
 }
 
 header {
@@ -125,7 +170,22 @@ button:hover {
     Stadium Spotter ⚽
 </header>
 
-<div class="container card" id="club-game">
+<div class="container game-layout">
+
+    <!-- INSTRUKTIONER -->
+    <div class="instructions">
+        <h3>How to play 📝</h3>
+        <ul>
+            <li>Your objective is to guess the correct club.</li>
+            <li>You will get 6 chances to guess the correct club.</li>
+            <li>After every guess you will get a clue of wich club it is.</li>
+            <li>Guess the right club in the 6 chances and you will win ⚽</li>
+        </ul>
+    </div>
+
+    <!-- SPELET -->
+    <div class="card" id="club-game">
+
     <h2>Guess the Club 🏟️</h2>
 
     <!-- SCORE / STREAK -->
@@ -171,4 +231,5 @@ setInterval(createSnowflake, 300);
 
 </body>
 </html>
+
 
