@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Photo Gallery</title>
+<title>Football Player Gallery</title>
+<link rel="icon" href="images/logo.png" type="image/x-icon">
 
 <style>
 /* --- Base Styles (same as index) --- */
@@ -56,9 +57,9 @@ p {
 }
 
 .gallery-container img {
-    width: 280px;
-    height: 170px;
-    object-fit: cover;
+    width: 200px;  /* Adjusted for football player images */
+    height: 320px;  /* Tall, portrait aspect */
+    object-fit: cover;  /* Ensures the image fills the space without stretching */
     border-radius: 14px;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -121,19 +122,25 @@ button:hover {
 </head>
 
 <body>
-
 <header onclick="window.location.href='index.html'">
-    Stadium Spotter ⚽
+    Stadium Guesser ⚽
 </header>
 
+
 <div class="container">
-    <h2>Photo Gallery</h2>
-    <p>Click on a stadium image to see it!</p>
+    <h2>Football Player Gallery</h2>
+    <p>These are some very cold and skillful ballers...</p>
 
     <div class="gallery-container">
-        <img src="images/stadiums/diegomaradona.jpg" alt="Stadio Diego Maradona">
-        <img src="images/stadiums/stamfordbridge.jpg" alt="Stamford Bridge">
-        <img src="images/stadiums/stadevelodrome.jpg" alt="Stade Vélodrome">
+        <!-- Updated to pull images from 'images/players' folder -->
+        <img src="images/players/lamine.jpg" alt="Lamine Yamal">
+        <img src="images/players/zirkzee.jpg" alt="Joshua Zirkzee">
+        <img src="images/players/promes.jpg" alt="Quincy Promes">
+        <img src="images/players/toby.jpeg" alt="Toby McPherson"> <!-- New Image 1 -->
+        <img src="images/players/neo.jpeg" alt="Neo Bengtsson"> <!-- New Image 2 -->
+        <img src="images/players/olise.jpg" alt="Michael Olise"> <!-- New Image 3 -->
+        <img src="images/players/barcola.jpg" alt="Bradley Barcola"> <!-- New Image 4 -->
+        <img src="images/players/pogba.jpg" alt="Paul Pogba."> <!-- New Image 5 -->
     </div>
 
     <button onclick="window.location.href='index.html'">Home</button>

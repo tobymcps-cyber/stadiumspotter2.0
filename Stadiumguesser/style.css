@@ -1,10 +1,10 @@
 /* --- Global --- */
 body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    background: #eaeaea;
-    color: #222;
-    text-align: center;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    /* You could also use an image as a background */
+    background-image: url('path/to/your/background-image.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 header {
@@ -100,6 +100,14 @@ button:hover {
     border-radius: 12px;
 }
 
+/* --- Map Instructions --- */
+#map-instructions {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    color: #f4f3f0;
+    font-weight: normal;
+}
+
 /* --- Top Bar --- */
 #topBar {
     display: flex;
@@ -144,7 +152,8 @@ button:hover {
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     cursor: pointer;
 }
-/* ===============================
+
+/* =============================== 
    FRONT PAGE BUTTON ALIGNMENT FIX
    =============================== */
 
@@ -172,5 +181,22 @@ button:hover {
         width: 90%;
         max-width: 350px;
     }
+    
 }
 
+/* New header for the game mode, styled like the home page header */
+header {
+    background: rgba(15, 25, 50, 0.95);
+    padding: 25px;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    border-bottom: 2px solid #ffdd59;
+    cursor: pointer;
+}
+
+header:hover {
+    background: #0f1c33;
+}

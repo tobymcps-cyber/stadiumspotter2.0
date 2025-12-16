@@ -52,17 +52,26 @@ function shuffleArray(arr) {
 function setDifficulty(level) {
   if (level === 'easy') {
     rounds = 5; // Easy level: 5 rounds
-    allRounds = shuffleArray(stadiums.easy); // Randomize easy stadiums
+    stadiumsToUse = stadiums.easy; // Set stadiums to easy difficulty
   } else if (level === 'medium') {
     rounds = 7; // Medium level: 7 rounds
-    allRounds = shuffleArray(stadiums.medium); // Randomize medium stadiums
+    stadiumsToUse = stadiums.medium; // Set stadiums to medium difficulty
   } else if (level === 'hard') {
     rounds = 10; // Hard level: 10 rounds
-    allRounds = shuffleArray(stadiums.hard); // Randomize hard stadiums
+    stadiumsToUse = stadiums.hard; // Set stadiums to hard difficulty
   }
+
+  // Shuffle the selected stadiums for the chosen difficulty
+  allRounds = shuffleArray([...stadiumsToUse]);
+
+  // Split into rounds of 3 stadiums each
+  allRounds = [];
+  for (let i = 0; i < rounds; i++) {
+    allRounds.push(allRounds.slice(i * 3, i * 3 + 3)); // Always 3 stadiums per round
+  }
+
   startGame();
 }
-
 
 // Start game
 function startGame() {
@@ -71,13 +80,10 @@ function startGame() {
   document.getElementById('scoreDisplay').textContent = `Score: ${score}`;
   document.getElementById('feedback').textContent = '';
 
-  // Shuffle the selected stadiums for the chosen difficulty
-  const shuffled = shuffleArray([...stadiumsToUse]);
-
-  // Split into rounds of 3 stadiums each
+  // Split the selected stadiums into rounds
   allRounds = [];
   for (let i = 0; i < rounds; i++) {
-    allRounds.push(shuffled.slice(i * 3, i * 3 + 3));
+    allRounds.push(shuffleArray([...stadiumsToUse]).slice(i * 3, i * 3 + 3)); // Split into 3
   }
 
   nextRound();
