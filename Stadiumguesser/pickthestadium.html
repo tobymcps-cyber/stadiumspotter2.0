@@ -1,135 +1,163 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pick The Stadium</title>
-<link rel="stylesheet" href="style.css">
-<!-- Google Font for Christmas style -->
-<link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to bottom, #0b1d3a, #1a2f5d);
-    color: #fff;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pick The Stadium</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Font for Christmas style -->
+  <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/logo.png" type="image/x-icon">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #0b1d3a, #1a2f5d);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
 
-  /* Snow effect */
-  .snowflake {
-    position: fixed;
-    top: -10px;
-    z-index: 9999;
-    pointer-events: none;
-    color: #fff;
-    user-select: none;
-    font-size: 1em;
-    animation-name: fall;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-  }
+    /* Snow effect */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      z-index: 9999;
+      pointer-events: none;
+      color: #fff;
+      user-select: none;
+      font-size: 1em;
+      animation-name: fall;
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
 
-  @keyframes fall {
-    0% { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(100vh) rotate(360deg); }
-  }
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
 
-  header {
-    font-size: 2.2rem;
-    font-weight: bold;
-    margin: 20px 0;
-    cursor: pointer;
-    color: #ffdd59;
-    text-align: center;
-    text-shadow: 0 0 10px #ffdd59;
-  }
+    /* --- Header Styling --- */
+    header {
+      background: rgba(15, 25, 50, 0.95);
+      padding: 25px;
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      border-bottom: 2px solid #ffdd59;
+      cursor: pointer;
+      color: #f6f5f3;
+      transition: background 0.3s ease-in-out, transform 0.2s ease;
+    }
 
-  .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 25px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-    text-align: center;
-  }
+    header:hover {
+      background: #0f1c33;
+      transform: scale(1.05);
+    }
 
-  h2 {
-    margin-bottom: 15px;
-  }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 25px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      text-align: center;
+    }
 
-  .info-panel {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 10px;
-    margin: 15px 0;
-    font-size: 1.2rem;
-    text-align: left;
-    line-height: 1.5;
-    font-family: 'Mountains of Christmas', cursive; /* Christmas font */
-    color: #ffecb3;
-  }
+    h2 {
+      margin-bottom: 15px;
+    }
 
-  .info-panel span {
-    color: #ffdd59;
-    font-weight: bold;
-  }
+    .info-panel {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 10px;
+      margin: 15px 0;
+      font-size: 1.2rem;
+      text-align: left;
+      line-height: 1.5;
+      font-family: 'Mountains of Christmas', cursive; /* Christmas font */
+      color: #f6f5f1;
+    }
 
-  .round-container {
-    margin-top: 20px;
-  }
+    .info-panel span {
+      color: #f1f0ea;
+      font-weight: bold;
+    }
 
-  .images-row {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 15px;
-  }
+    .round-container {
+      margin-top: 20px;
+    }
 
-  .images-row img {
-    width: 250px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
+    .images-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 15px;
+    }
 
-  .images-row img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px #ffdd59;
-  }
+    .images-row img {
+      width: 250px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-  #scoreDisplay, #feedback {
-    font-weight: bold;
-    margin-top: 15px;
-    font-size: 1.2rem;
-    color: #ffdd59;
-    text-shadow: 0 0 5px #ffdd59;
-  }
+    .images-row img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #f0efed;
+    }
 
-  button {
-    padding: 12px 25px;
-    margin: 10px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1.1rem;
-    background: linear-gradient(135deg, #0459ae, #0459ae);
-    color: #fff;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
+    #scoreDisplay, #feedback {
+      font-weight: bold;
+      margin-top: 15px;
+      font-size: 1.2rem;
+      color: #f9f8f5;
+      text-shadow: 0 0 5px #ffdd59;
+    }
 
-  button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  }
-</style>
+    button {
+      padding: 12px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, #0459ae, #0459ae);
+      color: #fff;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    .difficulty-buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .difficulty-buttons button {
+      margin: 0 10px;
+    }
+
+    .difficulty-info {
+      font-size: 1.2rem;
+      color: #fbfaf7;
+      margin-bottom: 10px;
+      text-shadow: 0 0 5px #ffdd59;
+    }
+  </style>
 </head>
 <body>
 
@@ -146,15 +174,28 @@
   }
 </script>
 
-<header onclick="window.location.href='index.html'">Stadium Spotter</header>
+<header onclick="window.location.href='index.html'">Stadium Guesser 🏟️</header>
 
 <div class="container">
   <h2>Pick The Stadium ⚽</h2>
+  
+  <!-- Text explaining difficulty change -->
+  <div class="difficulty-info">
+    🎮 Choose the difficulty level below to start the game!
+  </div>
+
+  <div class="difficulty-buttons">
+    <button onclick="setDifficulty('easy')">Easy</button>
+    <button onclick="setDifficulty('medium')">Medium</button>
+    <button onclick="setDifficulty('hard')">Hard</button>
+  </div>
+
   <div id="roundContainer" class="round-container"></div>
   <div id="feedback"></div>
   <div id="scoreDisplay"></div>
   <button onclick="startGame()">Restart Game</button>
   <button onclick="window.location.href='index.html'">Home</button>
+
   <div class="info-panel">
     <p>🎄 <span>Fun Football & Festive Facts:</span></p>
     <ul>
@@ -168,42 +209,72 @@
 </div>
 
 <script>
+// Stadiums Array
 const stadiums = [
-  { name:"Camp Nou", img:"images/stadiums/campnou.jpg" },
-  { name:"Anfield", img:"images/stadiums/anfield.jpg" },
-  { name:"Old Trafford", img:"images/stadiums/oldtrafford.jpg" },
-  { name:"Santiago Bernabéu", img:"images/stadiums/bernabeu.jpg" },
-  { name:"Allianz Arena", img:"images/stadiums/allianz.jpg" },
-  { name:"San Siro", img:"images/stadiums/sansiro.jpg" },
-  { name:"Stamford Bridge", img:"images/stadiums/stamfordbridge.jpg" },
-  { name:"Stade Velodrome", img:"images/stadiums/stadevelodrome.jpg" },
-  { name:"Signal Iduna Park", img:"images/stadiums/signaliduna.jpg" },
-  { name:"Diego Armando Maradona", img:"images/stadiums/diegomaradona.jpg" },
-  { name:"Parc des Princes", img:"images/stadiums/parcprinces.jpg" },
-
-  /* NYA ARENOR */
-  { name:"Emirates Stadium", img:"images/stadiums/emirates.jpg" },
-  { name:"Tottenham Hotspur Stadium", img:"images/stadiums/tottenham.jpg" },
-  { name:"Wembley Stadium", img:"images/stadiums/wembley.jpg" },
-  { name:"Etihad Stadium", img:"images/stadiums/etihad.jpg" },
-  { name:"Metropolitano", img:"images/stadiums/metropolitano.jpg" },
-  { name:"Estádio da Luz", img:"images/stadiums/daluz.jpg" },
-  { name:"Estádio do Dragão", img:"images/stadiums/dragao.jpg" },
-  { name:"Celtic Park", img:"images/stadiums/celticpark.jpg" },
-  { name:"Ibrox Stadium", img:"images/stadiums/ibrox.jpg" }
+  { name: "Camp Nou", img: "images/stadiums/campnou.jpg" },
+  { name: "Anfield", img: "images/stadiums/anfield.jpg" },
+  { name: "Old Trafford", img: "images/stadiums/oldtrafford.jpg" },
+  { name: "Santiago Bernabéu", img: "images/stadiums/bernabeu.jpg" },
+  { name: "Allianz Arena", img: "images/stadiums/allianz.jpg" },
+  { name: "San Siro", img: "images/stadiums/sansiro.jpg" },
+  { name: "Stamford Bridge", img: "images/stadiums/stamfordbridge.jpg" },
+  { name: "Stade Velodrome", img: "images/stadiums/stadevelodrome.jpg" },
+  { name: "Signal Iduna Park", img: "images/stadiums/signaliduna.jpg" },
+  { name: "Diego Armando Maradona", img: "images/stadiums/diegomaradona.jpg" },
+  { name: "Parc des Princes", img: "images/stadiums/parcprincess.jpg" },
+  { name: "Emirates Stadium", img: "images/stadiums/emirates.jpg" },
+  { name: "Tottenham Hotspur Stadium", img: "images/stadiums/tottenham.jpg" },
+  { name: "Wembley Stadium", img: "images/stadiums/wembley.jpg" },
+  { name: "Etihad Stadium", img: "images/stadiums/etihad.jpg" },
+  { name: "Metropolitano", img: "images/stadiums/metropolitano.jpg" },
+  { name: "Estádio da Luz", img: "images/stadiums/daluz.jpg" },
+  { name: "Estádio do Dragão", img: "images/stadiums/dragao.jpg" },
+  { name: "Celtic Park", img: "images/stadiums/celticpark.jpg" },
+  { name: "Ibrox Stadium", img: "images/stadiums/ibrox.jpg" },
+  { name: "Maracanã", img: "images/stadiums/maracana.jpg" },
+  { name: "Luzhniki Stadium", img: "images/stadiums/luzhniki.jpg" },
+  { name: "Millennium Stadium", img: "images/stadiums/millennium.jpg" },
+  { name: "Cotton Bowl", img: "images/stadiums/cottonbowl.jpg" },
+  { name: "Azteca Stadium", img: "images/stadiums/azteca.jpg" },
+  { name: "Bukit Jalil National Stadium", img: "images/stadiums/bukitjalil.jpg" },
+  { name: "Rose Bowl", img: "images/stadiums/rosebowl.jpg" },
+  { name: "Wanda Metropolitano", img: "images/stadiums/wandametropolitano.jpg" },
+  { name: "Khalifa International Stadium", img: "images/stadiums/khalifa.jpg" },
+  { name: "King Fahd International Stadium", img: "images/stadiums/kingfahd.jpg" },
+  { name: "BMO Field", img: "images/stadiums/bmo.jpg" },
+  { name: "Camping World Stadium", img: "images/stadiums/campingworld.jpg" },
+  { name: "La Bombonera", img: "images/stadiums/labombonera.jpg" },
+  { name: "Red Bull Arena", img: "images/stadiums/redbullarena.jpg" },
+  { name: "Vodafone Park", img: "images/stadiums/vodafonepark.jpg" },
+  { name: "Miller Park", img: "images/stadiums/millerpark.jpg" },
+  { name: "Bucharest National Arena", img: "images/stadiums/bucharestarena.jpg" },
+  { name: "La Rosaleda", img: "images/stadiums/larosaleda.jpg" },
 ];
 
-
-let rounds = 7;
+let rounds = 7; // Default rounds for Medium
 let currentRound = 0;
 let score = 0;
 let allRounds = [];
 let correctStadium = "";
 
+// Set Difficulty (Easy, Medium, Hard)
+function setDifficulty(level) {
+  if (level === 'easy') {
+    rounds = 5; // Easy level: 5 rounds
+  } else if (level === 'medium') {
+    rounds = 7; // Medium level: 7 rounds
+  } else if (level === 'hard') {
+    rounds = 10; // Hard level: 10 rounds
+  }
+  startGame();
+}
+
+// Shuffle function
 function shuffleArray(arr) {
   return arr.sort(() => Math.random() - 0.5);
 }
 
+// Start the game
 function startGame() {
   score = 0;
   currentRound = 0;
@@ -213,21 +284,22 @@ function startGame() {
   const shuffled = shuffleArray([...stadiums]);
   allRounds = [];
   for (let i = 0; i < rounds; i++) {
-    allRounds.push(shuffled.slice(i*3, i*3 + 3));
+    allRounds.push(shuffled.slice(i * 3, i * 3 + 3)); // Always 3 stadiums per round
   }
 
   nextRound();
 }
 
+// Next Round function
 function nextRound() {
-  if(currentRound >= rounds) {
+  if (currentRound >= rounds) {
     document.getElementById('roundContainer').innerHTML = `<h3>🎄 Game over! Your score: ${score}/${rounds}</h3>`;
     document.getElementById('feedback').textContent = '';
     return;
   }
 
   const roundStadiums = allRounds[currentRound];
-  correctStadium = roundStadiums[Math.floor(Math.random()*roundStadiums.length)].name;
+  correctStadium = roundStadiums[Math.floor(Math.random() * roundStadiums.length)].name;
 
   let html = `<h3>Round ${currentRound + 1}: Click on <span style="color:#27ae60">${correctStadium}</span></h3>`;
   html += `<div class="images-row">`;
@@ -241,8 +313,9 @@ function nextRound() {
   currentRound++;
 }
 
+// Check Answer function
 function checkAnswer(selected) {
-  if(selected === correctStadium) {
+  if (selected === correctStadium) {
     score++;
     document.getElementById('feedback').textContent = `✅ Correct! It was ${correctStadium}`;
   } else {
@@ -257,4 +330,3 @@ startGame();
 
 </body>
 </html>
-

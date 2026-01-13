@@ -1,8 +1,21 @@
 const stadiums = [
-    { name:"Camp Nou", lat:41.3809, lng:2.1228 },
-    { name:"Santiago Bernabéu", lat:40.4531, lng:-3.6883 },
-    { name:"Anfield", lat:53.4308, lng:-2.9608 },
-    { name:"Old Trafford", lat:53.4631, lng:-2.2913 }
+    { name: "Camp Nou", lat: 41.3809, lng: 2.1228 },
+    { name: "Santiago Bernabéu", lat: 40.4531, lng: -3.6883 },
+    { name: "Anfield", lat: 53.4308, lng: -2.9608 },
+    { name: "Old Trafford", lat: 53.4631, lng: -2.2913 },
+    { name: "Wembley", lat: 51.5560, lng: -0.2795 },
+    { name: "Allianz Arena", lat: 48.2188, lng: 11.6242 },
+    { name: "Etihad Stadium", lat: 53.4831, lng: -2.2004 },
+    { name: "Signal Iduna Park", lat: 51.4926, lng: 7.4510 },
+    { name: "San Siro", lat: 45.4789, lng: 9.1244 },
+    { name: "Luzhniki Stadium", lat: 55.7170, lng: 37.5552 },
+    { name: "Stade de France", lat: 48.9244, lng: 2.3606 },
+    { name: "Parc des Princes", lat: 48.8414, lng: 2.2535 },
+    { name: "Veltins-Arena", lat: 51.5360, lng: 7.0765 },
+    { name: "Stamford Bridge", lat: 51.4816, lng: -0.1900 },
+    { name: "Juventus Stadium", lat: 45.1116, lng: 7.6274 },
+    { name: "Amsterdam Arena", lat: 52.3730, lng: 4.9491 },
+    { name: "Olympiastadion (Berlin)", lat: 52.5145, lng: 13.2905 }
 ];
 
 let shuffledStadiums, current, score;
