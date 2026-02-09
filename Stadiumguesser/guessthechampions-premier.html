@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Premier League Champions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="images/logo.png" type="image/x-icon">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0b1d3a, #1a2f5d);
+    color: white;
+    text-align: center;
+}
+
+header {
+    padding: 22px;
+    font-size: 2.3rem;
+    font-weight: bold;
+    background: rgba(15,25,50,0.95);
+    border-bottom: 2px solid #ffdd59;
+    cursor: pointer;
+}
+
+header:hover {
+    color: #ffdd59;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+#season {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: #ffdd59;
+}
+
+img {
+    width: 220px;
+    margin-bottom: 30px;
+}
+
+button {
+    display: block;
+    margin: 12px auto;
+    padding: 14px 30px;
+    width: 280px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    background: linear-gradient(135deg, #0459ae, #0459ae);
+    color: white;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #050e6f, #050e6f);
+}
+
+#score {
+    margin-top: 30px;
+    font-size: 1.4rem;
+    color: #ffdd59;
+}
+</style>
+</head>
+
+<body>
+
+<header onclick="window.location.href='index.html'">
+    Stadium Guesser ⚽
+</header>
+
+<div class="container">
+    <div id="season"></div>
+    <img id="teamImage">
+    <div id="options"></div>
+    <div id="score">Score: 0</div>
+</div>
+
+<script>
+let score = 0;
+let current = 0;
+
+const questions = [
+    { season: "Premier League 2004–05", image: "images/chelsea.png", correct: "Chelsea", options: ["Chelsea", "Arsenal", "Man United"] },
+    { season: "Premier League 2006–07", image: "images/manutd.png", correct: "Manchester United", options: ["Chelsea", "Manchester United", "Liverpool"] },
+    { season: "Premier League 2007–08", image: "images/manutd.png", correct: "Manchester United", options: ["Arsenal", "Chelsea", "Manchester United"] },
+    { season: "Premier League 2009–10", image: "images/chelsea.png", correct: "Chelsea", options: ["Man United", "Chelsea", "Arsenal"] },
+    { season: "Premier League 2010–11", image: "images/manutd.png", correct: "Manchester United", options: ["Man City", "Chelsea", "Manchester United"] },
+    { season: "Premier League 2011–12", image: "images/mancity.png", correct: "Manchester City", options: ["Manchester City", "Man United", "Chelsea"] },
+    { season: "Premier League 2012–13", image: "images/manutd.png", correct: "Manchester United", options: ["Man City", "Chelsea", "Manchester United"] },
+    { season: "Premier League 2014–15", image: "images/chelsea.png", correct: "Chelsea", options: ["Man City", "Chelsea", "Arsenal"] },
+    { season: "Premier League 2015–16", image: "images/leicester.png", correct: "Leicester City", options: ["Tottenham", "Leicester City", "Arsenal"] },
+    { season: "Premier League 2016–17", image: "images/chelsea.png", correct: "Chelsea", options: ["Chelsea", "Tottenham", "Man City"] },
+    { season: "Premier League 2017–18", image: "images/mancity.png", correct: "Manchester City", options: ["Man United", "Liverpool", "Manchester City"] },
+    { season: "Premier League 2018–19", image: "images/mancity.png", correct: "Manchester City", options: ["Liverpool", "Manchester City", "Chelsea"] },
+    { season: "Premier League 2019–20", image: "images/liverpool.png", correct: "Liverpool", options: ["Man City", "Liverpool", "Man United"] },
+    { season: "Premier League 2020–21", image: "images/mancity.png", correct: "Manchester City", options: ["Manchester City", "Man United", "Chelsea"] },
+    { season: "Premier League 2022–23", image: "images/mancity.png", correct: "Manchester City", options: ["Arsenal", "Manchester City", "Newcastle"] }
+];
+
+function loadQuestion() {
+    const q = questions[current];
+    document.getElementById("season").textContent = q.season;
+    document.getElementById("teamImage").src = q.image;
+
+    const optionsDiv = document.getElementById("options");
+    optionsDiv.innerHTML = "";
+
+    q.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.textContent = option;
+        btn.onclick = () => checkAnswer(option);
+        optionsDiv.appendChild(btn);
+    });
+}
+
+function checkAnswer(answer) {
+    if (answer === questions[current].correct) {
+        score += 10;
+    }
+
+    current++;
+
+    if (current < questions.length) {
+        loadQuestion();
+    } else {
+        document.querySelector(".container").innerHTML = `
+            <h1>Game Over</h1>
+            <p>Your Score: ${score}</p>
+            <button onclick="window.location.reload()">Play Again</button>
+        `;
+    }
+
+    document.getElementById("score").textContent = "Score: " + score;
+}
+
+loadQuestion();
+</script>
+
+</body>
+</html>

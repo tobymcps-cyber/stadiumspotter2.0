@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Guess The Champions</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="images/logo.png" type="image/x-icon">
 
 <style>
 body {
@@ -14,58 +15,133 @@ body {
     text-align: center;
 }
 
+/* HEADER */
 header {
     padding: 25px;
     font-size: 2.5rem;
     font-weight: bold;
     background: rgba(15,25,50,0.95);
     border-bottom: 2px solid #ffdd59;
+    cursor: pointer;
 }
 
+header:hover {
+    color: #ffdd59;
+}
+
+/* CONTENT */
 .container {
-    margin-top: 80px;
+    max-width: 900px;
+    margin: 70px auto;
+    padding: 0 20px;
 }
 
 h1 {
-    font-size: 2.4rem;
-    margin-bottom: 50px;
+    font-size: 2.6rem;
+    margin-bottom: 15px;
 }
 
-button {
-    display: block;
-    margin: 20px auto;
-    padding: 18px 40px;
-    font-size: 1.4rem;
-    border-radius: 15px;
+.subtitle {
+    font-size: 1.3rem;
+    color: #d0d0d0;
+    margin-bottom: 60px;
+}
+
+/* GAME CARDS */
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 35px 25px;
+    width: 320px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+.card h2 {
+    font-size: 1.8rem;
+    color: #ffdd59;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 1.15rem;
+    color: #e0e0e0;
+    margin-bottom: 30px;
+}
+
+/* BUTTON */
+.card button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 14px;
     border: none;
     cursor: pointer;
     font-weight: bold;
-    width: 300px;
+    width: 100%;
     background: linear-gradient(135deg, #0459ae, #0459ae);
     color: white;
 }
 
-button:hover {
+.card button:hover {
     background: linear-gradient(135deg, #050e6f, #050e6f);
-    transform: scale(1.05);
+}
+
+@media (max-width: 700px) {
+    h1 {
+        font-size: 2.2rem;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<header>Guess The Champions 🏆</header>
+<header onclick="window.location.href='index.html'">
+    Stadium Guesser ⚽
+</header>
 
 <div class="container">
-    <h1>Select a League</h1>
+    <h1>Guess The Champions 🏆</h1>
+    <p class="subtitle">
+        Test your football history knowledge.  
+        Can you remember who lifted the trophy?
+    </p>
 
-    <button onclick="window.location.href='guessthechampions-champions.html'">
-        Champions League
-    </button>
+    <div class="cards">
+        <div class="card">
+            <h2>Champions League</h2>
+            <p>
+                You will see a Champions League final year.  
+                Choose the club that won the final and earn points.
+            </p>
+            <button onclick="window.location.href='guessthechampions-champions.html'">
+                Play Champions League
+            </button>
+        </div>
 
-    <button onclick="window.location.href='guessthechampions-premier.html'">
-        Premier League
-    </button>
+        <div class="card">
+            <h2>Premier League</h2>
+            <p>
+                A Premier League season is shown.  
+                Pick the correct league winner and prove your knowledge.
+            </p>
+            <button onclick="window.location.href='guessthechampions-premier.html'">
+                Play Premier League
+            </button>
+        </div>
+    </div>
 </div>
 
 </body>
