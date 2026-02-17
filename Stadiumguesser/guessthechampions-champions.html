@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Champions League Winners</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="images/logo.png" type="image/x-icon">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0b1d3a, #1a2f5d);
+    color: white;
+    text-align: center;
+}
+
+header {
+    padding: 22px;
+    font-size: 2.3rem;
+    font-weight: bold;
+    background: rgba(15,25,50,0.95);
+    border-bottom: 2px solid #ffdd59;
+    cursor: pointer;
+}
+
+header:hover {
+    color: #ffdd59;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+#year {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: #ffdd59;
+}
+
+img {
+    width: 230px;
+    margin-bottom: 30px;
+}
+
+button {
+    display: block;
+    margin: 12px auto;
+    padding: 14px 30px;
+    width: 270px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    background: linear-gradient(135deg, #0459ae, #0459ae);
+    color: white;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #050e6f, #050e6f);
+}
+
+#score {
+    margin-top: 30px;
+    font-size: 1.4rem;
+    color: #ffdd59;
+}
+</style>
+</head>
+
+<body>
+
+<header onclick="window.location.href='index.html'">
+    Stadium Guesser ⚽
+</header>
+
+<div class="container">
+    <div id="year"></div>
+    <img id="teamImage">
+    <div id="options"></div>
+    <div id="score">Score: 0</div>
+</div>
+
+<script>
+let score = 0;
+let current = 0;
+
+const questions = [
+    {
+        year: "Champions League Final 2013",
+        image: "images/bayern.png",
+        correct: "Bayern Munich",
+        options: ["Bayern Munich", "Borussia Dortmund", "Real Madrid"]
+    },
+    {
+        year: "Champions League Final 2014",
+        image: "images/realmadrid.png",
+        correct: "Real Madrid",
+        options: ["Atlético Madrid", "Real Madrid", "Chelsea"]
+    },
+    {
+        year: "Champions League Final 2017",
+        image: "images/realmadrid.png",
+        correct: "Real Madrid",
+        options: ["Juventus", "Barcelona", "Real Madrid"]
+    },
+    {
+        year: "Champions League Final 2019",
+        image: "images/liverpool.png",
+        correct: "Liverpool",
+        options: ["Tottenham", "Liverpool", "Ajax"]
+    },
+    {
+        year: "Champions League Final 2020",
+        image: "images/bayern.png",
+        correct: "Bayern Munich",
+        options: ["PSG", "Bayern Munich", "RB Leipzig"]
+    }
+];
+
+function loadQuestion() {
+    const q = questions[current];
+    document.getElementById("year").textContent = q.year;
+    document.getElementById("teamImage").src = q.image;
+
+    const optionsDiv = document.getElementById("options");
+    optionsDiv.innerHTML = "";
+
+    q.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.textContent = option;
+        btn.onclick = () => checkAnswer(option);
+        optionsDiv.appendChild(btn);
+    });
+}
+
+function checkAnswer(answer) {
+    if (answer === questions[current].correct) {
+        score += 10;
+    }
+
+    current++;
+
+    if (current < questions.length) {
+        loadQuestion();
+    } else {
+        document.querySelector(".container").innerHTML = `
+            <h1>Game Over</h1>
+            <p>Your Score: ${score}</p>
+            <button onclick="window.location.reload()">Play Again</button>
+        `;
+    }
+
+    document.getElementById("score").textContent = "Score: " + score;
+}
+
+loadQuestion();
+</script>
+
+</body>
+</html>
